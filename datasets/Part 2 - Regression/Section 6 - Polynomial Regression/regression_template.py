@@ -7,6 +7,7 @@ Created on Tue Mar  5 21:34:14 2019
 """
 
 # Plantilla de Regresión
+runfile('C:/Users/usuario/Documents/GitHub/machinelearning-az/datasets/Part 2 - Regression/Section 6 - Polynomial Regression/polinomial_regression.py', wdir='C:/Users/usuario/Documents/GitHub/machinelearning-az/datasets/Part 2 - Regression/Section 6 - Polynomial Regression')
 
 # Cómo importar las librerías
 import numpy as np

@@ -1,4 +1,6 @@
 # Plantilla de Regresión
+setwd("~/GitHub/machinelearning-az/datasets/Part 2 - Regression/Section 6 - Polynomial Regression")
+
 
 # Importar el dataset
 dataset = read.csv('Position_Salaries.csv')

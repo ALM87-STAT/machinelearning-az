@@ -1,6 +1,7 @@
-# Eclat
+# Eclat ####
+setwd("~/GitHub/machinelearning-az/datasets/Part 5 - Association Rule Learning/Section 29 - Eclat")
 
-# Preprocesado de Datos
+# Preprocesado de Datos ####
 #install.packages("arules")
 library(arules)
 dataset = read.csv("Market_Basket_Optimisation.csv", header = FALSE)
@@ -9,10 +10,10 @@ dataset = read.transactions("Market_Basket_Optimisation.csv",
 summary(dataset)
 itemFrequencyPlot(dataset, topN = 10)
 
-# Entrenar algoritmo Eclat con el dataset
+# Entrenar algoritmo Eclat con el dataset ####
 rules = eclat(data = dataset, 
                 parameter = list(support = 0.003, minlen = 2))
 
-# Visualización de los resultados
+# Visualización de los resultados ####
 inspect(sort(rules, by = 'support')[1:10])
 

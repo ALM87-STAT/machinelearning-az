@@ -1,10 +1,11 @@
-# SVR
+# SVR ####
+setwd("~/GitHub/machinelearning-az/datasets/Part 2 - Regression/Section 7 - Support Vector Regression (SVR)")
 
-# Importar el dataset
+# Importar el dataset ####
 dataset = read.csv('Position_Salaries.csv')
 dataset = dataset[, 2:3]
 
-# Dividir los datos en conjunto de entrenamiento y conjunto de test
+# Dividir los datos en conjunto de entrenamiento y conjunto de test ####
 # install.packages("caTools")
 # library(caTools)
 # set.seed(123)
@@ -13,11 +14,11 @@ dataset = dataset[, 2:3]
 # testing_set = subset(dataset, split == FALSE)
 
 
-# Escalado de valores
+# Escalado de valores ####
 # training_set[,2:3] = scale(training_set[,2:3])
 # testing_set[,2:3] = scale(testing_set[,2:3])
 
-# Ajustar SVR con el Conjunto de Datos
+# Ajustar SVR con el Conjunto de Datos ####
 #install.packages("e1071")
 library(e1071)
 regression = svm(formula = Salary ~ ., 
@@ -25,10 +26,10 @@ regression = svm(formula = Salary ~ .,
                  type = "eps-regression", 
                  kernel = "radial")
   
-# PredicciÃ³n de nuevos resultados con SVR 
+# Predicción de nuevos resultados con SVR #### 
 y_pred = predict(regression, newdata = data.frame(Level = 6.5))
 
-# VisualizaciÃ³n del modelo de SVR
+# Visualización del modelo de SVR ####
 # install.packages("ggplot2")
 library(ggplot2)
 x_grid = seq(min(dataset$Level), max(dataset$Level), 0.1)
@@ -38,6 +39,6 @@ ggplot() +
   geom_line(aes(x = dataset$Level, y = predict(regression, 
                                         newdata = data.frame(Level = dataset$Level))),
             color = "blue") +
-  ggtitle("PredicciÃ³n (SVR)") +
+  ggtitle("Predicción (SVR)") +
   xlab("Nivel del empleado") +
   ylab("Sueldo (en $)")

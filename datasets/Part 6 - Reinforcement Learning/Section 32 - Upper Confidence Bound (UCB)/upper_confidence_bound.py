@@ -6,17 +6,17 @@ Created on Sun Apr  7 12:41:01 2019
 @author: juangabriel
 """
 
-# Upper Confidence Bound (UCB)
+### Upper Confidence Bound (UCB)
 
-# Importar las librerías
+### Importar las librerías
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Cargar el dataset
+### Cargar el dataset
 dataset = pd.read_csv("Ads_CTR_Optimisation.csv")
 
-# Algoritmo de UCB
+### Algoritmo de UCB
 import math
 N = 10000
 d = 10
@@ -43,10 +43,8 @@ for n in range(0, N):
     reward = dataset.values[n, ad]
     sums_of_rewards[ad] = sums_of_rewards[ad] + reward
     total_reward = total_reward + reward
-    
-    
-    
-# Histograma de resultados
+     
+### Histograma de resultados
 plt.hist(ads_selected)
 plt.title("Histograma de anuncios")
 plt.xlabel("ID del Anuncio")

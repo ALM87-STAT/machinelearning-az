@@ -6,17 +6,17 @@ Created on Tue Apr  9 09:22:04 2019
 @author: juangabriel
 """
 
-# Muestreo Thompson
+### Muestreo Thompson
 
-# Importar las librerías
+### Importar las librerías
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Cargar el dataset
+### Cargar el dataset
 dataset = pd.read_csv("Ads_CTR_Optimisation.csv")
 
-# Algoritmo de Muestreo Thompson
+### Algoritmo de Muestreo Thompson
 import random
 N = 10000
 d = 10
@@ -40,7 +40,7 @@ for n in range(0, N):
         number_of_rewards_0[ad] = number_of_rewards_0[ad] + 1
     total_reward = total_reward + reward
     
-# Histograma de resultados
+### Histograma de resultados
 plt.hist(ads_selected)
 plt.title("Histograma de anuncios")
 plt.xlabel("ID del Anuncio")

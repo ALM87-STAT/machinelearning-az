@@ -23,3 +23,12 @@ from sklearn.impute import SimpleImputer
 imputer = SimpleImputer(missing_values = np.nan, strategy = 'mean', verbose=0) 
 imputer = imputer.fit(X[:, 1:3])
 X[:, 1:3] = imputer.transform(X[:,1:3])
+
+# Otra forma para el tratamiento de los NAs
+meanAge = dataset["Age"].mean()
+meanSalary = dataset["Salary"].mean()
+meanAge = dataset["Age"].replace(np.nan, meanAge)
+meanSalary  = dataset["Salary"].replace(np.nan, meanSalary)
+
+dataset.Age = meanAge
+dataset.Salary = meanSalary 

@@ -1,9 +1,10 @@
 # Upper Confidence Bound
+setwd("~/GitHub/machinelearning-az/datasets/Part 6 - Reinforcement Learning/Section 32 - Upper Confidence Bound (UCB)")
 
-# Importar los datos
+# Importar los datos ####
 dataset = read.csv("Ads_CTR_Optimisation.csv")
 
-# Implementar UCB
+# Implementar UCB ####
 d = 10
 N = 10000
 number_of_selections = integer(d)
@@ -33,7 +34,7 @@ for(n in 1:N){
   total_reward = total_reward + reward
 }
 
-# Visualización de resultados - Histograma
+# Visualización de resultados - Histograma ####
 hist(ads_selected,
      col = "lightblue",
      main = "Histograma de los Anuncios",

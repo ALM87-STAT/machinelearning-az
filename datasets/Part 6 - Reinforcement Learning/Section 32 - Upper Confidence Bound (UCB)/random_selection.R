@@ -1,9 +1,10 @@
 # Random Selection
+setwd("~/GitHub/machinelearning-az/datasets/Part 6 - Reinforcement Learning/Section 32 - Upper Confidence Bound (UCB)")
 
-# Importing the dataset
+# Importing the dataset ####
 dataset = read.csv('Ads_CTR_Optimisation.csv')
 
-# Implementing Random Selection
+# Implementing Random Selection ####
 N = 10000
 d = 10
 ads_selected = integer(0)
@@ -15,7 +16,7 @@ for (n in 1:N) {
   total_reward = total_reward + reward
 }
 
-# Visualising the results
+# Visualising the results ####
 hist(ads_selected,
      col = 'blue',
      main = 'Histogram of ads selections',

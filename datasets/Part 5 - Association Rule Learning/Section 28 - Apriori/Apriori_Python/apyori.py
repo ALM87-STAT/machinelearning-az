@@ -21,7 +21,7 @@ __author_email__ = 'ymoch.dev@gmail.com'
 
 
 ################################################################################
-# Data structures.
+### Data structures.
 ################################################################################
 class TransactionManager(object):
     """
@@ -131,7 +131,7 @@ OrderedStatistic = namedtuple( # pylint: disable=C0103
 
 
 ################################################################################
-# Inner functions.
+### Inner functions.
 ################################################################################
 def create_next_candidates(prev_candidates, length):
     """
@@ -245,7 +245,7 @@ def filter_ordered_statistics(ordered_statistics, **kwargs):
 
 
 ################################################################################
-# API function.
+### API function.
 ################################################################################
 def apriori(transactions, **kwargs):
     """
@@ -300,7 +300,7 @@ def apriori(transactions, **kwargs):
 
 
 ################################################################################
-# Application functions.
+### Application functions.
 ################################################################################
 def parse_args(argv):
     """

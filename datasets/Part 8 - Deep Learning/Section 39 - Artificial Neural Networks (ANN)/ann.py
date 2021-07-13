@@ -30,12 +30,20 @@ y = dataset.iloc[:, 13].values
 
 # Codificar datos categóricos
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.compose import make_column_transformer
+
+# Codificar la categoría país
 labelencoder_X_1 = LabelEncoder()
 X[:, 1] = labelencoder_X_1.fit_transform(X[:, 1])
+
+# Codidificar la categoría sexo
 labelencoder_X_2 = LabelEncoder()
 X[:, 2] = labelencoder_X_2.fit_transform(X[:, 2])
-onehotencoder = OneHotEncoder(categorical_features=[1])
-X = onehotencoder.fit_transform(X).toarray()
+
+# Converir en variables Dummy
+onehotencoder = make_column_transformer((OneHotEncoder(), 
+                                         [1]), remainder = "passthrough")
+X = onehotencoder.fit_transform(X)
 X = X[:, 1:]
 
 # Dividir el data set en conjunto de entrenamiento y conjunto de testing

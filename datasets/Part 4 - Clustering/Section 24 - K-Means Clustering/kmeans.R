@@ -1,10 +1,11 @@
-# Clustering con K-means
+# Clustering con K-means ####
+setwd("~/GitHub/machinelearning-az/datasets/Part 4 - Clustering/Section 24 - K-Means Clustering")
 
 # Importar los datos
 dataset = read.csv("Mall_Customers.csv")
 X = dataset[, 4:5]
 
-# Método del codo
+# Método del codo ####
 set.seed(6)
 wcss = vector()
 for (i in 1:10){
@@ -13,11 +14,11 @@ for (i in 1:10){
 plot(1:10, wcss, type = 'b', main = "Método del codo",
      xlab = "Número de clusters (k)", ylab = "WCSS(k)")
 
-# Aplicar el algoritmo de k-means con k óptimo
+# Aplicar el algoritmo de k-means con k óptimo ####
 set.seed(29)
 kmeans <- kmeans(X, 5, iter.max = 300, nstart = 10)
 
-#Visualización de los clusters
+#Visualización de los clusters ####
 #install.packages("cluster")
 library(cluster)
 clusplot(X, 

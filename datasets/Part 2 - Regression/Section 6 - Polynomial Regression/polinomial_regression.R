@@ -1,10 +1,12 @@
-# Regresi贸n Polin贸mica
+# Regresi髇 Polin髆ica ####
+setwd("~/GitHub/machinelearning-az/datasets/Part 2 - Regression/Section 6 - Polynomial Regression")
 
-# Importar el dataset
+
+# Importar el dataset ####
 dataset = read.csv('Position_Salaries.csv')
 dataset = dataset[, 2:3]
 
-# Dividir los datos en conjunto de entrenamiento y conjunto de test
+# Dividir los datos en conjunto de entrenamiento y conjunto de test ####
 # install.packages("caTools")
 # library(caTools)
 # set.seed(123)
@@ -13,22 +15,22 @@ dataset = dataset[, 2:3]
 # testing_set = subset(dataset, split == FALSE)
 
 
-# Escalado de valores
+# Escalado de valores ####
 # training_set[,2:3] = scale(training_set[,2:3])
 # testing_set[,2:3] = scale(testing_set[,2:3])
 
-# Ajustar Modelo de Regresi贸n Lineal con el Conjunto de Datos
+# Ajustar Modelo de Regresi髇 Lineal con el Conjunto de Datos ####
 lin_reg = lm(formula = Salary ~ ., 
              data = dataset)
 
-# Ajustar Modelo de Regresi贸n Polin贸mica con el Conjunto de Datos
+# Ajustar Modelo de Regresi髇 Polin髆ica con el Conjunto de Datos ####
 dataset$Level2 = dataset$Level^2
 dataset$Level3 = dataset$Level^3
 dataset$Level4 = dataset$Level^4
 poly_reg = lm(formula = Salary ~ .,
               data = dataset)
 
-# Visualizaci贸n del modelo lineal
+# Visualizaci髇 del modelo lineal ####
 # install.packages("ggplot2")
 library(ggplot2)
 ggplot() +
@@ -41,7 +43,7 @@ ggplot() +
   ylab("Sueldo (en $)")
 
 
-# Visualizaci贸n del modelo polin贸mico
+# Visualizaci髇 del modelo polin髆ico ####
 x_grid = seq(min(dataset$Level), max(dataset$Level), 0.1)
 ggplot() +
   geom_point(aes(x = dataset$Level , y = dataset$Salary),
@@ -56,10 +58,10 @@ ggplot() +
   xlab("Nivel del empleado") +
   ylab("Sueldo (en $)")
 
-# Predicci贸n de nuevos resultados con Regresi贸n Lineal
+# Predicci髇 de nuevos resultados con Regresi髇 Lineal ####
 y_pred = predict(lin_reg, newdata = data.frame(Level = 6.5))
 
-# Predicci贸n de nuevos resultados con Regresi贸n Polin贸mica
+# Predicci髇 de nuevos resultados con Regresi髇 Polin髆ica ####
 y_pred_poly = predict(poly_reg, newdata = data.frame(Level = 6.5,
                                                 Level2 = 6.5^2,
                                                 Level3 = 6.5^3,

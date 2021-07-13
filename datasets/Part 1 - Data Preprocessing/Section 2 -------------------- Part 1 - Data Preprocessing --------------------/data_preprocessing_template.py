@@ -6,25 +6,45 @@ Created on Wed Feb 27 19:43:11 2019
 @author: juangabriel
 """
 
-# Plantilla de Pre Procesado
+#### Plantilla de Pre Procesado
 
 # Cómo importar las librerías
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Importar el data set
+#### Importar el data set
 dataset = pd.read_csv('Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, 3].values
 
+#### Tratamiento de los NAs
+from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(missing_values = np.nan, strategy = 'mean', verbose=0) 
+imputer = imputer.fit(X[:, 1:3])
+X[:, 1:3] = imputer.transform(X[:,1:3])
 
-# Dividir el data set en conjunto de entrenamiento y conjunto de testing
+#### Codificar datos categóricos
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.compose import make_column_transformer
+
+labelencoder_X = LabelEncoder()
+X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
+
+onehotencoder = make_column_transformer((OneHotEncoder(), 
+                                         [0]), remainder = "passthrough")
+X = onehotencoder.fit_transform(X)
+
+labelencoder_y = LabelEncoder()
+y = labelencoder_y.fit_transform(y)
+
+#### Dividir el data set en conjunto de entrenamiento y conjunto de testing
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, 
+                                                    test_size = 0.2, 
+                                                    random_state = 0)
 
-
-# Escalado de variables
+#### Escalado de variables
 from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)

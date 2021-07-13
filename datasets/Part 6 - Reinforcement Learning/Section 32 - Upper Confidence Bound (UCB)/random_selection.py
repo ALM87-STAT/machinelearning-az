@@ -8,15 +8,15 @@ Created on Sun Apr  7 12:21:01 2019
 
 # Selección Aleatoria
 
-# Importar las librarias
+### Importar las librarias
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Importar el dataset
+### Importar el dataset
 dataset = pd.read_csv('Ads_CTR_Optimisation.csv')
 
-# Implementrar una Selección Aleatoria
+### Implementrar una Selección Aleatoria
 import random
 N = 10000
 d = 10
@@ -28,7 +28,7 @@ for n in range(0, N):
     reward = dataset.values[n, ad]
     total_reward = total_reward + reward
 
-# Visualizar los resultados - Histograma
+### Visualizar los resultados - Histograma
 plt.hist(ads_selected)
 plt.title('Histograma de selección de anuncios')
 plt.xlabel('Anuncio')

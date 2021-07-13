@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+###!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Sat Mar 23 10:24:47 2019
@@ -6,40 +6,35 @@ Created on Sat Mar 23 10:24:47 2019
 @author: juangabriel
 """
 
-# Clasificación con árboles de Decisión
+### Clasificación con árboles de Decisión
 
-
-# Cómo importar las librerías
+### Cómo importar las librerías
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Importar el data set
+### Importar el data set
 dataset = pd.read_csv('Social_Network_Ads.csv')
-
 X = dataset.iloc[:, [2,3]].values
 y = dataset.iloc[:, 4].values
 
-
-# Dividir el data set en conjunto de entrenamiento y conjunto de testing
+### Dividir el data set en conjunto de entrenamiento y conjunto de testing
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 
-
-# Ajustar el clasificador de Árbol de Decisión en el Conjunto de Entrenamiento
+### Ajustar el clasificador de Árbol de Decisión en el Conjunto de Entrenamiento
 from sklearn.tree import DecisionTreeClassifier
 classifier = DecisionTreeClassifier(criterion = "entropy", random_state = 0)
 classifier.fit(X_train, y_train)
 
-
-# Predicción de los resultados con el Conjunto de Testing
+### Predicción de los resultados con el Conjunto de Testing
 y_pred  = classifier.predict(X_test)
 
-# Elaborar una matriz de confusión
+### Elaborar una matriz de confusión
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 
-# Representación gráfica de los resultados del algoritmo en el Conjunto de Entrenamiento
+### Representación gráfica de los resultados del algoritmo en el Conjunto de Entrenamiento
 from matplotlib.colors import ListedColormap
 X_set, y_set = X_train, y_train
 X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 1),
@@ -57,8 +52,7 @@ plt.ylabel('Sueldo Estimado')
 plt.legend()
 plt.show()
 
-
-# Representación gráfica de los resultados del algoritmo en el Conjunto de Testing
+### Representación gráfica de los resultados del algoritmo en el Conjunto de Testing
 X_set, y_set = X_test, y_test
 X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 1),
                      np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 500))

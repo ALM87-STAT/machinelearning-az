@@ -1,9 +1,10 @@
 # Muestreo de Thompson
+setwd("~/GitHub/machinelearning-az/datasets/Part 6 - Reinforcement Learning/Section 33 - Thompson Sampling")
 
-# Importar los datos
+# Importar los datos ####
 dataset = read.csv("Ads_CTR_Optimisation.csv")
 
-# Implementar el Muestreo de Thompson
+# Implementar el Muestreo de Thompson ####
 d = 10
 N = 10000
 number_of_rewards_1 = integer(d)
@@ -32,7 +33,7 @@ for(n in 1:N){
   total_reward = total_reward + reward
 }
 
-# Visualización de resultados - Histograma
+# Visualización de resultados - Histograma ####
 hist(ads_selected,
      col = "lightblue",
      main = "Histograma de los Anuncios",
